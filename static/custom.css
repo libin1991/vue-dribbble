@@ -1,0 +1,37 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, "pingfang sc", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, STHeiti, SimSun, sans-serif !important;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  color: inherit;
+}
+
+input, button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+input[type=button] {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: block;
+}
+
+.clearfix::after {
+  clear: both;
+}
