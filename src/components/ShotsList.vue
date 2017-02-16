@@ -1,5 +1,5 @@
 <template>
-  <div id="shots">
+  <div id="shots-list">
     <header>
       <h1>Dribbble</h1>
       <spinner :show="loading"></spinner>
@@ -17,7 +17,7 @@ import ShotsItem from './ShotsItem.vue'
 import { fetchShots } from '../utils/api.js'
 
 export default {
-  name: 'shots',
+  name: 'ShotsList',
   data () {
     return {
       loading: true,

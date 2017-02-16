@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <shots></shots>
+    <router-view></router-view>
     <footer>
       Yet another <a href="https://dribbble.com/" id="dribbble">Dribbble</a> by me.
     </footer>
@@ -9,12 +9,12 @@
 
 <script>
 
-import Shots from './components/Shots.vue'
+import ShotsList from './components/ShotsList.vue'
 
 export default {
   name: 'app',
   components: {
-    Shots,
+    ShotsList,
   }
 }
 </script>
@@ -33,5 +33,11 @@ footer {
   #dribbble {
     text-decoration: underline;
   }
+}
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-active {
+  opacity: 0;
 }
 </style>
