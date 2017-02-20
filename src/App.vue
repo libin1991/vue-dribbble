@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div id="content">
+      <router-view></router-view>  
+    </div>
     <footer>
       Yet another <a href="https://dribbble.com/" id="dribbble">Dribbble</a> by me.
     </footer>
@@ -22,6 +24,14 @@ export default {
 <style lang="scss">
 html, body {
   height: 100%;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+#content {
+  flex: 1;
 }
 footer {
   width: 100%;
