@@ -15,7 +15,7 @@ const routes = [
     name: 'ShotsList',
     component: ShotsList
   }, {
-    path: '/shot/:id(\\d+)',
+    path: '/shot/:shotId(\\d+)',
     name: 'Shot',
     component: Shot
   }, {
