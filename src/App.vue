@@ -29,6 +29,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  background-color: #fafafa;
 }
 #content {
   flex: 1;
@@ -39,7 +40,7 @@ footer {
   line-height: .6rem;
   font-size: .3rem;
   padding: .2rem;
-  background-color: #eee;
+  background-color: #cddc39;
   #dribbble {
     text-decoration: underline;
   }

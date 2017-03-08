@@ -4,40 +4,40 @@
       <h1>Dribbble</h1>
       <spinner :show="loading"></spinner>
     </header>  
-    <div class="shots-item-container">
+    <div class="shots-item-container" v-infinite-scroll="loadShots" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
       <shots-item v-for="shot in shots" :shot="shot"></shots-item> 
     </div>
-    <div class="more" @click="loadShots(page)">{{ isLoading }}</div>
+    <div class="more">{{ isLoading }}</div>
   </div>
 </template>
 
 <script>
 import Spinner from './Spinner.vue'
 import ShotsItem from './ShotsItem.vue'
+import infiniteScroll from 'vue-infinite-scroll'
 import { fetchShots } from '../utils/api.js'
 
 export default {
   name: 'ShotsList',
   data () {
     return {
-      loading: true,
+      loading: false,
       page: 1,
       shots: [],
     }
   },
   beforeMount () {
-    this.loadShots(this.page)
   },
   mounted () {
   },
   methods: {
-    loadShots: function (page) {
+    loadShots: function () {
       this.loading = true
-      fetchShots(page).then(response => {
+      fetchShots(this.page).then(response => {
         this.shots.push.apply(this.shots, response.body.data)
+        this.page += 1
         this.loading = false
-        this.page ++
-      }, response => {
+      }).catch(err => {
         window.alert('Network error, please try again.')
       })
     }
@@ -50,6 +50,9 @@ export default {
   components: {
     ShotsItem,
     Spinner,
+  },
+  directives: {
+    infiniteScroll
   }
 }
 </script>
@@ -85,25 +88,17 @@ header {
   .shots-item {
     width: 5rem;
     flex: 0 1 5rem;
-    background-color: #fff;
     padding: .2rem;
   }
 }
 .more {
+  display: block;
   height: 1rem;
   line-height: 1rem;
   font-size: .4rem;
   font-weight: 500;
-  color: #fff;
   text-align: center;
   letter-spacing: .1rem;
-  background-color: #ec407a;
-  margin: .2rem;
-  border-radius: .04rem;
-  box-shadow: 0 .04rem .04rem .01rem rgba(0,0,0,.3);
-  &:active {
-    background-color: #f06292;
-    box-shadow: none;
-  }
+  margin: .2rem 0;
 }
 </style>
