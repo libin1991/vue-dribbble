@@ -8,12 +8,17 @@ Vue.use(VueRouter)
 
 import ShotsList from './components/ShotsList.vue'
 import Shot from './components/Shot.vue'
+import ShotLoading from './components/ShotLoading.vue'
 
 const routes = [
   {
     path: '/shots',
     name: 'ShotsList',
     component: ShotsList
+  },{
+    path: '/shotloading',
+    name: 'ShotLoading',
+    component: ShotLoading
   }, {
     path: '/shot/:shotId(\\d+)',
     name: 'Shot',
@@ -28,7 +33,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  // mode: 'history'
 })
 
 /* eslint-disable no-new */
