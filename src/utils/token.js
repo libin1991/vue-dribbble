@@ -1,0 +1,3 @@
+const ACCESS_TOKEN = '4894a542367cafeb7375dce82695586ec39a1b72c21a8d262ad82ddbf4d72c1c'
+
+export { ACCESS_TOKEN }
