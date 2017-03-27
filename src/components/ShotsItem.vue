@@ -1,9 +1,11 @@
 <template>
   <div class="shots-item">
-    <div class="shots-thumbnail-wrapper">  
-      <img class="shots-thumbnail" :src="shot.images.teaser" :alt="shot.title">
-      <div class="gif" v-show="shot.animated">GIF</div>
-    </div>
+    <router-link :to="{ name: 'Shot', params: { shotId: shot.id }}">
+      <div class="shots-thumbnail-wrapper">
+        <img class="shots-thumbnail" :src="shot.images.teaser" :alt="shot.title">
+        <div class="gif" v-show="shot.animated">GIF</div>
+      </div>
+    </router-link>
   </div>
 </template>
 

@@ -26,11 +26,11 @@
       <div class="shot-comments">
         <span class="comments-count">{{ pluralize(shot.comments_count) }}</span> 
         <ul class="comments">
-          <comment v-for="comment in comments" :key="comment" :comment="comment"></comment>
+          <comment v-for="comment in comments" :key="comment" :comment="comment" v-show="!commentsLoading"></comment>
         </ul>
         <div class="pagination">
-          <span class="prev" v-if="commentPage > 1" @click="loadComments(shot.id, -- commentPage)"> &lt; Prev</span>
-          <span class="next" v-if="commentPage < shot.comments_count / 10 " @click="loadComments(shot.id, ++ commentPage)">Next &gt;</span>
+          <button class="prev" :disabled="commentsLoading" v-if="commentPage > 1" @click="loadComments(shot.id, -- commentPage)"> &lt; Prev</button>
+          <button class="next" :disabled="commentsLoading" v-if="commentPage < shot.comments_count / 10 " @click="loadComments(shot.id, ++ commentPage)">Next &gt;</button>
         </div>
       </div>
     </div>
@@ -40,6 +40,8 @@
 <script>
 import { fetchShot, fetchShotComments } from '../utils/api.js'
 import Comment from './Comment.vue'
+import Spinner from './Spinner.vue'
+
 export default {
   name: 'Shot',
   data () {
@@ -69,7 +71,7 @@ export default {
           this.comments = response.body.data
           this.commentsLoading = false
         }).catch(err => {
-
+          window.alert('Network error, please try again.')
         })
     },
     format (datetime) {
@@ -88,6 +90,7 @@ export default {
   },
   components: {
     Comment,
+    Spinner,
   }
 }
 </script>
@@ -224,6 +227,7 @@ export default {
         width: 2rem;
         height: 1rem;
         line-height: 1rem;
+        color: #fff;
         background-color: #26a69a;
         border-radius: .04rem;
         box-shadow: 0 .04rem .04rem .01rem rgba(0, 0, 0, .3);
